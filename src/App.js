@@ -14,11 +14,12 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_API)
     axios.get(process.env.REACT_APP_API).then(data => {
       const dataSorted = data.data.sort((a, b) => a.passportID - b.passportID);
       setData(dataSorted);
       sessionStorage.setItem("data", JSON.stringify(dataSorted));
-    })
+    }).catch(err => console.log(err))
   }, [])
 
   const setDataWithSort = (data) => {
@@ -27,7 +28,7 @@ function App() {
 
   const updateSingleUser = (id, user) => {
     let dataTemp = [...data];
-    const userTemp = dataTemp.find(user => user.passportID === id);
+    const userTemp = dataTemp.find(user => Number(user.passportID) === id);
     for (const change in user) {
       userTemp[change] = user[change]
     }

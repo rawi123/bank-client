@@ -14,8 +14,8 @@ export default function CreditChange({ data, setData, updateSingleUser }) {
     }
 
 
-    const sendToHandelDeposit=(e, input)=>{
-        handelDeposit(e,input,setErrorMessage,updateSingleUser,process.env.REACT_APP_API + "credit/" + input.id,data);
+    const sendToHandelDeposit = (e, input) => {
+        handelDeposit(e, input, setErrorMessage, updateSingleUser, process.env.REACT_APP_API + "credit/" + input.id, data);
     }
 
 

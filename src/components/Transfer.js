@@ -57,6 +57,7 @@ export default function Transfer({ data, setData, updateSingleUser }) {
         e.preventDefault()
         try {
             const res = await axios.put(`${process.env.REACT_APP_API}send/${input.id1}/recive/${input.id2}`, { ammount: Number(input.ammount) });
+            console.log(res.data)
             updateSingleUser(input.id1, res.data.sender);
             updateSingleUser(input.id2, res.data.reciver);
             setErrorMessage("Transaction completed")
